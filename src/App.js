@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { createContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useFetch } from "./api/useFetch";
+// import { useFetch } from "./api/useFetch";
+import { getUserData } from "./api/userDataApi";
+import "./App.css";
+import TopBar from "./components/TopBar/TopBar";
+import { userContext } from "./context/userContext";
+import Routs from "./Routs";
 
 function App() {
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+  const [userData, setUserData] = useState();
+  const context = userContext;
+  const [{ isLoading, response, error }, createFetchOptions] = useFetch();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <context.Provider value={userData}>
+      <div className="App">
+        <TopBar />
+        <Routs />
+      </div>
+    </context.Provider>
   );
 }
 
