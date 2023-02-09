@@ -17,24 +17,24 @@ export const getToken = (createFetchOptions, code) => {
   createFetchOptions(url, data, config);
 };
 
-export const getUserData = (token, setUserName, setUserIcon) => {
+export const getUserData = (token) => {
+  // const baseUrl = "https://oauth.reddit.com/rising/";
   const baseUrl = "https://oauth.reddit.com/api/v1/me";
 
-  axios
-    .get(baseUrl, {
-      headers: {
-        Authorization: `bearer ${token}`,
-      },
-    })
-    .then((res) => {
-      console.log("from getUserData: ", res.data);
-      setUserName(res.data.name);
-      setUserIcon(res.data.icon_img);
-      return res.data;
-    })
-    .catch((err) => {
-      console.log("err: ", err);
-      //   setError(err.response.data);
-      //   setIsLoading(false);
-    });
+  return axios.get(baseUrl, {
+    headers: {
+      Authorization: `bearer ${token}`,
+    },
+  });
+};
+
+export const getListPosts = (token) => {
+  const baseUrl = "https://oauth.reddit.com/rising/";
+  // const baseUrl = "https://oauth.reddit.com/api/v1/me";
+
+  return axios.get(baseUrl, {
+    headers: {
+      Authorization: `bearer ${token}`,
+    },
+  });
 };

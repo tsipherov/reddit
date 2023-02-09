@@ -83,6 +83,13 @@ const Auth = () => {
                     }}
                   />
                 </fieldset>
+                <Link
+                  to="https://www.reddit.com/api/v1/authorize?client_id=uAmIbE9Ka4vcgm5Etmrrng&response_type=code&state=random_string&redirect_uri=http://localhost:3000/auth&duration=permanent&scope=read submit identity"
+                  className="nav-link"
+                  exact
+                >
+                  registration on Raddit
+                </Link>
                 <button
                   className="btn btn-lg btn-primary pull-xs-right"
                   type="submit"

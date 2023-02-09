@@ -2,10 +2,11 @@ import { Link, NavLink } from "react-router-dom";
 
 function TopBar() {
   return (
+    // <h1>Top Bar</h1>
     <nav className="navbar navbar-light">
       <div className="container">
         <Link to="/" className="navbar-brand">
-          Medium
+          Reddit
         </Link>
         <ul className="navbar-nav flex-row pull-xs-right">
           <li className="nav-item">
